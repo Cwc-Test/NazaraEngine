@@ -9,6 +9,10 @@
 #include <cstring>
 #include <Nazara/Network/Debug.hpp>
 
+#if defined(EMSCRIPTEN)
+using u_short = unsigned short;
+#endif
+
 namespace Nz
 {
 	namespace Detail

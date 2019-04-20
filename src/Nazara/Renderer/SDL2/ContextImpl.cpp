@@ -4,6 +4,7 @@
 
 // Code inspiré de NeHe (Lesson1) et de la SFML par Laurent Gomila
 
+#include <array>
 #include <cstring>
 #include <Nazara/Core/CallOnExit.hpp>
 #include <Nazara/Core/Error.hpp>

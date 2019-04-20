@@ -32,7 +32,7 @@ namespace Nz
 
 	void ThreadImpl::SetName(const Nz::String& name)
 	{
-#ifdef __GNUC__
+#if defined(__GNUC__) && !defined(EMSCRIPTEN)
 		pthread_setname_np(m_handle, name.GetConstBuffer());
 #else
 		NazaraWarning("Setting thread name is not supported on this platform");
@@ -41,7 +41,7 @@ namespace Nz
 
 	void ThreadImpl::SetCurrentName(const Nz::String& name)
 	{
-#ifdef __GNUC__
+#if defined(__GNUC__) && !defined(EMSCRIPTEN)
 		pthread_setname_np(pthread_self(), name.GetConstBuffer());
 #else
 		NazaraWarning("Setting current thread name is not supported on this platform");

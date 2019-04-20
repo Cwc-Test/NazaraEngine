@@ -22,7 +22,7 @@ namespace Nz
 		public:
 			GuillotineImageAtlas();
 			GuillotineImageAtlas(const GuillotineImageAtlas&) = delete;
-			GuillotineImageAtlas(GuillotineImageAtlas&&) noexcept = default;
+			GuillotineImageAtlas(GuillotineImageAtlas&&) /*noexcept*/ = default;
 			~GuillotineImageAtlas() = default;
 
 			void Clear() override;
@@ -41,7 +41,7 @@ namespace Nz
 			void SetRectSplitHeuristic(GuillotineBinPack::GuillotineSplitHeuristic heuristic);
 
 			GuillotineImageAtlas& operator=(const GuillotineImageAtlas&) = delete;
-			GuillotineImageAtlas& operator=(GuillotineImageAtlas&&) noexcept = default;
+			GuillotineImageAtlas& operator=(GuillotineImageAtlas&&) /*noexcept*/ = default;
 
 		protected:
 			struct Layer;
