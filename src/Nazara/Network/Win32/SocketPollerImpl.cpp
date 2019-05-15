@@ -196,7 +196,7 @@ namespace Nz
 			return 0;
 		}
 
-		assert(selectValue >= 0);
+		//assert(selectValue >= 0);
 		activeSockets = static_cast<unsigned int>(selectValue);
 
 		if (error)

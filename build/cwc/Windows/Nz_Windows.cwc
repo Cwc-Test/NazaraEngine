@@ -1,0 +1,60 @@
+;--Nz_Core--
+-c {_pModule}src/Nazara/Core/ !{_pModule}src/Nazara/Core/Posix/ -o {vNzOutObj}Core/  -#To  {vNzOutDynamic}NazaraCore.dll 
+-DNAZARA_CORE_BUILD
+>
+;--Nz_Thirdparty_libstb_image--
+-c {_pModule}thirdparty/src/stb/ -o {vNzOutObj}thirdparty_stb/  -#To {vNzOutStatic}libstb_image.a
+>
+;--Nz_Thirdparty_chipmunk--
+-c {_pModule}thirdparty/src/chipmunk/ -o {vNzOutObj}thirdparty_chipmunk/  -#To {vNzOutStatic}libchipmunk.a
+>
+;--Nz_Thirdparty_lua--
+-c {_pModule}thirdparty/src/Lua/ -o {vNzOutObj}thirdparty_Lua/  -#To {vNzOutStatic}libLua.a
+>
+;--Nz_Utility--
+-c {_pModule}src/Nazara/Utility/  !{_pModule}src/Nazara/Utility/X11  -o {vNzOutObj}Utility/  -#To {vNzOutDynamic}NazaraUtility.dll
+-DNAZARA_UTILITY_BUILD  -lstb_image -lNazaraCore -lgdi32 -lfreetype-s
+>
+;--Nz_PLATFORM--
+-c {_pModule}src/Nazara/Platform/  !{_pModule}src/Nazara/Platform/X11/ !{_pModule}src/Nazara/Platform/SDL2/ -o {vNzOutObj}Platform/  -#To {vNzOutDynamic}NazaraPlatform.dll
+-DNAZARA_PLATFORM_BUILD  -lNazaraCore -lNazaraUtility -lgdi32
+>
+;--Nz_RENDERER--
+-c {_pModule}src/Nazara/Renderer/  !{_pModule}src/Nazara/Renderer/GLX/ !{_pModule}src/Nazara/Renderer/SDL2/ -o {vNzOutObj}Renderer/  -#To {vNzOutDynamic}NazaraRenderer.dll
+-DNAZARA_RENDERER_BUILD -DNAZARA_RENDERER_OPENGL  -lNazaraCore -lNazaraPlatform -lNazaraUtility -lopengl32 -lgdi32 -lwinmm
+>
+;--Nz_AUDIO--
+-c {_pModule}src/Nazara/Audio/  -o {vNzOutObj}Audio/  -#To {vNzOutDynamic}NazaraAudio.dll
+-DNAZARA_AUDIO_BUILD  -DNAZARA_AUDIO_OPENAL    -lNazaraCore  -lsndfile
+>
+;--Nz_GRAPHICS--
+-c {_pModule}src/Nazara/Graphics/  -o {vNzOutObj}Graphics/  -#To {vNzOutDynamic}NazaraGraphics.dll
+-DNAZARA_GRAPHICS_BUILD  -lNazaraCore -lNazaraUtility -lNazaraRenderer
+>
+;--Nz_NETWORK--
+-c {_pModule}src/Nazara/Network/  !{_pModule}src/Nazara/Network/Posix/ !{_pModule}src/Nazara/Network/Linux/ -o {vNzOutObj}Network/  -#To {vNzOutDynamic}NazaraNetwork.dll
+-DNAZARA_NETWORK_BUILD  -lNazaraCore -lws2_32
+>
+;--Nz_PHYSICS_3D--
+-c {_pModule}src/Nazara/Physics3D/  -o {vNzOutObj}Physics3D/  -#To {vNzOutDynamic}NazaraPhysics3D.dll
+-DNAZARA_PHYSICS3D_BUILD -lNazaraCore -lNewton
+>
+;--Nz_PHYSICS_2D--
+-c {_pModule}src/Nazara/Physics2D/  -o {vNzOutObj}Physics2D/  -#To {vNzOutDynamic}NazaraPhysics2D.dll
+-DNAZARA_PHYSICS2D_BUILD -lNazaraCore -lNewton -lchipmunk
+>
+;--Nz_NOISE--
+-c {_pModule}src/Nazara/Noise/  -o {vNzOutObj}Noise/  -#To {vNzOutDynamic}NazaraNoise.dll
+-DNAZARA_NOISE_BUILD -lNazaraCore
+>
+;--Nz_LUA--
+-c {_pModule}src/Nazara/Lua/  -o {vNzOutObj}Lua/  -#To {vNzOutDynamic}NazaraLua.dll
+-DNAZARA_LUA_BUILD -lNazaraCore -lLua
+>
+;--Nz_NDK--
+-c {_pModule}SDK/src/NDK/  -o {vNzOutObj}NDK/  -#To {vNzOutDynamic}NazaraNDK.dll
+-DNDK_BUILD  -lNazaraCore -lNazaraNoise -lNazaraLua -lNazaraPhysics3D -lNazaraPhysics2D -lNazaraRenderer -lNazaraPlatform -lNazaraNetwork -lNazaraUtility -lNazaraAudio -lNazaraGraphics
+>
+;--Copy last Thirdparty Dll
+-#Copy {_pModule}thirdparty/lib/common/x86/ {vNzOutDynamic}/
+>

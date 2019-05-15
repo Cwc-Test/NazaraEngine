@@ -1,0 +1,6 @@
+>
+-{vNzOutStatic}= {_pOutput}Nazara_Lib_Static_{_sPlatform}_{_sOpt}/
+-{vNzOutDynamic}= {_pOutput}Nazara_Lib_Dynamic_{_sPlatform}_{_sOpt}/
+-{vNzOutObj}= {_pOutput}Nazara_Obj_{_sPlatform}_{_sOpt}/
+>
+-#Run {_pModule}/build/cwc/{_sPlatform}/Nz_{_sPlatform}.cwc

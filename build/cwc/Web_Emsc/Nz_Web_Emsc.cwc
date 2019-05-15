@@ -1,0 +1,16 @@
+;--Nz_Core--
+-c {_pModule}src/Nazara/Core/ !{_pModule}src/Nazara/Core/Win32/ -o {vNzOutObj}Core/  -#To  {_pOutput}Nazara_Lib_{_sPlatform}_{_sOpt}/NazaraCore.bc
+-DNAZARA_CORE_BUILD
+-DNAZARA_LITTLE_ENDIAN
+;-DNAZARA_PLATFORM_SDL2
+;-DEMSCRIPTEN
+>
+;--Nz_Utility--
+-c {_pModule}src/Nazara/Utility/ -o {vNzOutObj}Utility/
+-DNAZARA_LITTLE_ENDIAN 
+;-DNAZARA_PLATFORM_SDL2
+;-DEMSCRIPTEN
+>
+;--Nz_Thirdparty_libstb_image--
+-c {_pModule}thirdparty/src/stb/ -o {vNzOutObj}thirdparty_stb/
+>

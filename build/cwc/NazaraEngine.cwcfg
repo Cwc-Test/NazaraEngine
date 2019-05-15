@@ -1,0 +1,21 @@
+<Lib> <!-- NazaraLib Cwc Config -->
+
+<cmd>@{_pModule}/build/cwc/NzBuild.cwc</cmd>
+
+<Arguments>
+
+	<Compiler>-I {_pModule}src/  -I {_pModule}thirdparty/include/ -I {_pModule}include/ -I {_pModule}extlibs/include/ -I {_pModule}SDK/include/ -I {_pModule}SDK/src/</Compiler>
+	<Linker>-L {vNzOutStatic} -L {vNzOutDynamic} -L {_pModule}thirdparty/lib/mingw/x86/ </Linker>
+	
+	<CompilerLinker type="C++">-std=c++14 </CompilerLinker>
+
+</Arguments>
+
+
+<If_Platform name="Windows">
+
+	<Linker_Lib>-lgdi32 -lopengl32 -luser32</Linker_Lib>
+	
+</If_Platform>
+
+</Lib> <!-- End -->

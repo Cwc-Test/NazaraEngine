@@ -53,7 +53,7 @@ namespace Nz
 	#ifdef NAZARA_PLATFORM_x64
 		return true; // cpuid is always supported on x64 arch
 	#else
-		#if defined(NAZARA_COMPILER_CLANG) || defined(NAZARA_COMPILER_GCC) || defined(NAZARA_COMPILER_INTEL)
+		#if !defined(__EMSCRIPTEN__) && (defined(NAZARA_COMPILER_CLANG) || defined(NAZARA_COMPILER_GCC) || defined(NAZARA_COMPILER_INTEL))
 		int supported;
 		asm volatile ("	pushfl\n"
 					  " pop %%eax\n"
